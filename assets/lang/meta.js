@@ -1,0 +1,31 @@
+/* Zeportic — language catalog.
+   Every entry below has a matching pack file at assets/lang/<code>.js.
+   `name` is the endonym (native name), `dir` is the text direction. */
+window.ZEPORTIC_LANG_META = [
+  { code: 'en',    name: 'English',            dir: 'ltr' },
+  { code: 'fa',    name: 'فارسی',               dir: 'rtl' },
+  { code: 'ar',    name: 'العربية',             dir: 'rtl' },
+  { code: 'he',    name: 'עברית',               dir: 'rtl' },
+  { code: 'ur',    name: 'اردو',                dir: 'rtl' },
+  { code: 'de',    name: 'Deutsch',            dir: 'ltr' },
+  { code: 'fr',    name: 'Français',           dir: 'ltr' },
+  { code: 'es',    name: 'Español',            dir: 'ltr' },
+  { code: 'pt',    name: 'Português (BR)',     dir: 'ltr' },
+  { code: 'it',    name: 'Italiano',           dir: 'ltr' },
+  { code: 'nl',    name: 'Nederlands',         dir: 'ltr' },
+  { code: 'pl',    name: 'Polski',             dir: 'ltr' },
+  { code: 'cs',    name: 'Čeština',            dir: 'ltr' },
+  { code: 'el',    name: 'Ελληνικά',           dir: 'ltr' },
+  { code: 'ru',    name: 'Русский',            dir: 'ltr' },
+  { code: 'uk',    name: 'Українська',         dir: 'ltr' },
+  { code: 'tr',    name: 'Türkçe',             dir: 'ltr' },
+  { code: 'sv',    name: 'Svenska',            dir: 'ltr' },
+  { code: 'id',    name: 'Bahasa Indonesia',   dir: 'ltr' },
+  { code: 'vi',    name: 'Tiếng Việt',         dir: 'ltr' },
+  { code: 'hi',    name: 'हिन्दी',               dir: 'ltr' },
+  { code: 'th',    name: 'ไทย',                 dir: 'ltr' },
+  { code: 'ja',    name: '日本語',              dir: 'ltr' },
+  { code: 'ko',    name: '한국어',              dir: 'ltr' },
+  { code: 'zh-cn', name: '简体中文',            dir: 'ltr' },
+  { code: 'zh-tw', name: '繁體中文',            dir: 'ltr' },
+];
