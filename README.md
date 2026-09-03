@@ -1,7 +1,7 @@
 # Zeportic — Zammad Reporting Tool
 
 <p align="center">
-  <img src="assets/img/Zeportic.png" width="150" alt="Zeportic logo" />
+  <img src="assets/img/Zeportic.png" width="500" alt="Zeportic logo" />
 </p>
 
 <p align="center">
@@ -85,73 +85,12 @@ complete, admin-only analytics dashboard:
 
 ## Screenshots
 
-All screenshots below are generated from a live Zeportic instance fed with
-mock data (1,850 tickets, 12 agents, 6 channels, 8 organizations) — exactly
-what you will see with your own Zammad data.
-
-**Login — 3D logo, feature tour, theme & language switcher**
-
-<p align="center">
-  <img src="docs/screenshots/login.png" width="800" alt="Zeportic login page" />
-</p>
-
-**First-run setup wizard — environment check, connection test, admin account**
-
-<p align="center">
-  <img src="docs/screenshots/setup-welcome.png" width="490" alt="Setup wizard - welcome" />
-  <img src="docs/screenshots/setup-elasticsearch.png" width="490" alt="Setup wizard - Elasticsearch connection test" />
-  <img src="docs/screenshots/setup-admin.png" width="490" alt="Setup wizard - admin account" />
-</p>
-
-**Overview — KPIs with deltas, sparklines, AI insights, agent leaderboard**
-
 <p align="center">
   <img src="docs/screenshots/overview.png" width="800" alt="Overview dashboard" />
 </p>
 
-**Channels, Agents and Response Time reports**
-
-<p align="center">
-  <img src="docs/screenshots/channels.png" width="490" alt="Channels report" />
-  <img src="docs/screenshots/agents.png" width="490" alt="Agents report" />
-  <img src="docs/screenshots/response-time.png" width="490" alt="Response time report" />
-</p>
-
-**SLA & Escalation, Activity Heatmap and Ticket Trends with forecast**
-
-<p align="center">
-  <img src="docs/screenshots/sla.png" width="490" alt="SLA and escalation report" />
-  <img src="docs/screenshots/heatmap.png" width="490" alt="Activity heatmap" />
-  <img src="docs/screenshots/trends.png" width="490" alt="Ticket trends and forecast" />
-</p>
-
-**Interactive Word Cloud — click any word to drill into matching tickets**
-
 <p align="center">
   <img src="docs/screenshots/wordcloud.png" width="800" alt="Interactive word cloud" />
-</p>
-
-**Organizations, Tag Analytics and the searchable Tickets table**
-
-<p align="center">
-  <img src="docs/screenshots/organizations.png" width="490" alt="Organizations report" />
-  <img src="docs/screenshots/tags.png" width="490" alt="Tag analytics" />
-  <img src="docs/screenshots/tickets.png" width="490" alt="Tickets table" />
-</p>
-
-**Knowledge Base & Period Comparison, plus the Ctrl+K command palette**
-
-<p align="center">
-  <img src="docs/screenshots/knowledge-base.png" width="490" alt="Knowledge base report" />
-  <img src="docs/screenshots/period-comparison.png" width="490" alt="Period comparison" />
-  <img src="docs/screenshots/command-palette.png" width="490" alt="Command palette" />
-</p>
-
-**Light theme & mobile layout — fully responsive down to 360 px**
-
-<p align="center">
-  <img src="docs/screenshots/overview-light.png" width="490" alt="Light theme" />
-  <img src="docs/screenshots/mobile-overview.png" width="240" alt="Mobile layout" />
 </p>
 
 ## Requirements
@@ -437,7 +376,7 @@ http://127.0.0.1:1234;` + Let's Encrypt) instead of exposing port 1234 raw.
 Zeportic ships with **26 interface languages**, switchable at runtime from the
 globe button (login page and header) or the `L` keyboard shortcut:
 
-| | | | |
+| * | * | * | * |
 |---|---|---|---|
 | English | فارسی (Persian) | العربية (Arabic) | עברית (Hebrew) |
 | اردو (Urdu) | Deutsch (German) | Français (French) | Español (Spanish) |
@@ -649,5 +588,4 @@ the easiest way to help: one file, no code.
 
 ## License
 
-Released under the [GNU GPL-3.0](LICENSE) — same as Zammad itself.
-Copyright (C) 2026 Zeportic contributors.
+Released under the [GNU GPL-3.0](LICENSE) — Please read [LICENSE](LICENSE) for more information.
