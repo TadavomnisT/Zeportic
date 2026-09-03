@@ -10,7 +10,7 @@
 
 Please **do not open a public GitHub issue** for security problems.
 
-Instead, use [GitHub Security Advisories](https://github.com/YOUR-ORG/zeportic/security/advisories/new)
+Instead, use [GitHub Security Advisories](https://github.com/TadavomnisT/Zeportic/security/advisories/new)
 ("Report a vulnerability") or contact the maintainers directly. Include:
 
 - Affected version / commit hash

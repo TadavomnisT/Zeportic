@@ -1,7 +1,7 @@
 # Zeportic — Zammad Reporting Tool
 
 <p align="center">
-  <img src="assets/img/logo-mark.png" width="140" alt="Zeportic logo" />
+  <img src="assets/img/Zeportic.png" width="150" alt="Zeportic logo" />
 </p>
 
 <p align="center">
@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/TadavomnisT/Zeportic/stargazers"><img alt="GitHub stars" src="https://img.shields.io/badge/repository-TadavomnisT%2FZeportic-8b5cf6" /></a>
   <img alt="license" src="https://img.shields.io/badge/license-GPL--3.0-blueviolet" />
   <img alt="php" src="https://img.shields.io/badge/PHP-%E2%89%A5%208.0-773bbd" />
   <img alt="zammad" src="https://img.shields.io/badge/Zammad-6.x%20%7C%207.x-8b5cf6" />
@@ -18,7 +19,8 @@
 </p>
 
 > **Pure PHP. No npm. No bun. No Composer. No CDN. No internet required.**
-> Just PHP + HTML + CSS + JS. Copy the folder to your Zammad/Elasticsearch server and run it.
+> Just PHP + HTML + CSS + JS. Clone the repository, run one command, follow the
+> setup wizard — done.
 
 ---
 
@@ -26,22 +28,25 @@
 
 1. [Why Zeportic](#why-zeportic)
 2. [Features](#features)
-3. [Requirements](#requirements)
-4. [Quick start (3 steps)](#quick-start-3-steps)
-5. [Configuration reference](#configuration-reference)
-6. [Connecting to Zammad](#connecting-to-zammad)
+3. [Screenshots](#screenshots)
+4. [Requirements](#requirements)
+5. [Quick start](#quick-start)
+6. [First-run setup wizard](#first-run-setup-wizard)
+7. [Manual configuration (alternative)](#manual-configuration-alternative)
+8. [Configuration reference](#configuration-reference)
+9. [Connecting to Zammad](#connecting-to-zammad)
    - [Native (package-based) installation](#native-package-based-installation)
    - [Zammad running on Docker](#zammad-running-on-docker)
    - [Docker Compose service example](#docker-compose-service-example)
    - [Running Zeportic itself as a container](#running-zeportic-itself-as-a-container)
-7. [Running as a systemd service](#running-as-a-systemd-service)
-8. [Languages & translation](#languages--translation)
-9. [Security notes](#security-notes)
-10. [API reference](#api-reference)
-11. [Troubleshooting](#troubleshooting)
-12. [Project structure](#project-structure)
-13. [Contributing](#contributing)
-14. [License](#license)
+10. [Running as a systemd service](#running-as-a-systemd-service)
+11. [Languages & translation](#languages--translation)
+12. [Security notes](#security-notes)
+13. [API reference](#api-reference)
+14. [Troubleshooting](#troubleshooting)
+15. [Project structure](#project-structure)
+16. [Contributing](#contributing)
+17. [License](#license)
 
 ---
 
@@ -62,20 +67,92 @@ complete, admin-only analytics dashboard:
 
 ## Features
 
-| | |
+| Feature | Description |
 |---|---|
-| 📊 **Real-time KPIs** | Total / open / closed tickets, escalations, average first-response and resolution time, active agents — with period-over-period deltas. |
-| 🗂 **14 report sections** | Overview, Channels, Agents, Roles, Response Time, SLA & Escalation, Activity Heatmap, Word Cloud, Ticket Trends, Organizations, Tag Analytics, Knowledge Base, Period Comparison, Tickets. |
-| 💬 **Interactive word cloud** | The most frequent customer words in real time — click any word to drill into matching tickets. |
-| ⏱ **SLA & escalation analytics** | Compliance per priority, breach counts, escalation rates, response-time percentiles per channel. |
-| 📈 **Trends & forecasting** | Created-vs-closed daily trend, 7-day linear-regression forecast, anomaly detection (±2σ), period comparison. |
-| 🧠 **AI insights & leaderboard** | Auto-generated textual insights, agent performance leaderboard with podium. |
-| 🔔 **Smart notifications** | SLA breaches, escalations, unassigned and urgent-open ticket alerts. |
-| 📤 **Exports** | CSV / Excel / PDF export for every table; print-friendly layout. |
-| 🌍 **26 UI languages** | Full RTL & LTR support (English, Persian, Arabic, Hebrew, Urdu, Chinese, Japanese, Korean, Hindi and more) — switchable at runtime. |
-| 🌙 **Dark mode** | A carefully tuned purple dark theme across the whole dashboard. |
-| ⌨️ **Power-user tools** | Command palette (Ctrl+K), keyboard shortcuts, saved views, settings. |
-| 🩺 **Diagnostics** | `php diagnose.php` runs 7 connection checks with human-readable fixes; every error is structured-logged. |
+| **Real-time KPIs** | Total / open / closed tickets, escalations, average first-response and resolution time, active agents — with period-over-period deltas. |
+| **14 report sections** | Overview, Channels, Agents, Roles, Response Time, SLA & Escalation, Activity Heatmap, Word Cloud, Ticket Trends, Organizations, Tag Analytics, Knowledge Base, Period Comparison, Tickets. |
+| **Interactive word cloud** | The most frequent customer words in real time — click any word to drill into matching tickets. |
+| **SLA & escalation analytics** | Compliance per priority, breach counts, escalation rates, response-time percentiles per channel. |
+| **Trends & forecasting** | Created-vs-closed daily trend, 7-day linear-regression forecast, anomaly detection (±2σ), period comparison. |
+| **AI insights & leaderboard** | Auto-generated textual insights, agent performance leaderboard with podium. |
+| **Smart notifications** | SLA breaches, escalations, unassigned and urgent-open ticket alerts. |
+| **Exports** | CSV / Excel / PDF export for every table; print-friendly layout. |
+| **26 UI languages** | Full RTL & LTR support (English, Persian, Arabic, Hebrew, Urdu, Chinese, Japanese, Korean, Hindi and more) — switchable at runtime. |
+| **Dark mode** | A carefully tuned purple dark theme across the whole dashboard (default), with a light theme one click away. |
+| **Setup wizard** | A graphical first-run configuration: environment check, connection test with index auto-discovery, admin account creation — no file editing required. |
+| **Power-user tools** | Command palette (Ctrl+K), keyboard shortcuts, saved views, settings. |
+| **Diagnostics** | `php diagnose.php` runs 9 connection checks with human-readable fixes; every error is structured-logged. |
+
+## Screenshots
+
+All screenshots below are generated from a live Zeportic instance fed with
+mock data (1,850 tickets, 12 agents, 6 channels, 8 organizations) — exactly
+what you will see with your own Zammad data.
+
+**Login — 3D logo, feature tour, theme & language switcher**
+
+<p align="center">
+  <img src="docs/screenshots/login.png" width="800" alt="Zeportic login page" />
+</p>
+
+**First-run setup wizard — environment check, connection test, admin account**
+
+<p align="center">
+  <img src="docs/screenshots/setup-welcome.png" width="490" alt="Setup wizard - welcome" />
+  <img src="docs/screenshots/setup-elasticsearch.png" width="490" alt="Setup wizard - Elasticsearch connection test" />
+  <img src="docs/screenshots/setup-admin.png" width="490" alt="Setup wizard - admin account" />
+</p>
+
+**Overview — KPIs with deltas, sparklines, AI insights, agent leaderboard**
+
+<p align="center">
+  <img src="docs/screenshots/overview.png" width="800" alt="Overview dashboard" />
+</p>
+
+**Channels, Agents and Response Time reports**
+
+<p align="center">
+  <img src="docs/screenshots/channels.png" width="490" alt="Channels report" />
+  <img src="docs/screenshots/agents.png" width="490" alt="Agents report" />
+  <img src="docs/screenshots/response-time.png" width="490" alt="Response time report" />
+</p>
+
+**SLA & Escalation, Activity Heatmap and Ticket Trends with forecast**
+
+<p align="center">
+  <img src="docs/screenshots/sla.png" width="490" alt="SLA and escalation report" />
+  <img src="docs/screenshots/heatmap.png" width="490" alt="Activity heatmap" />
+  <img src="docs/screenshots/trends.png" width="490" alt="Ticket trends and forecast" />
+</p>
+
+**Interactive Word Cloud — click any word to drill into matching tickets**
+
+<p align="center">
+  <img src="docs/screenshots/wordcloud.png" width="800" alt="Interactive word cloud" />
+</p>
+
+**Organizations, Tag Analytics and the searchable Tickets table**
+
+<p align="center">
+  <img src="docs/screenshots/organizations.png" width="490" alt="Organizations report" />
+  <img src="docs/screenshots/tags.png" width="490" alt="Tag analytics" />
+  <img src="docs/screenshots/tickets.png" width="490" alt="Tickets table" />
+</p>
+
+**Knowledge Base & Period Comparison, plus the Ctrl+K command palette**
+
+<p align="center">
+  <img src="docs/screenshots/knowledge-base.png" width="490" alt="Knowledge base report" />
+  <img src="docs/screenshots/period-comparison.png" width="490" alt="Period comparison" />
+  <img src="docs/screenshots/command-palette.png" width="490" alt="Command palette" />
+</p>
+
+**Light theme & mobile layout — fully responsive down to 360 px**
+
+<p align="center">
+  <img src="docs/screenshots/overview-light.png" width="490" alt="Light theme" />
+  <img src="docs/screenshots/mobile-overview.png" width="240" alt="Mobile layout" />
+</p>
 
 ## Requirements
 
@@ -94,19 +171,81 @@ On the machine that will run Zeportic (usually the Zammad/ES host itself):
 
 That's it. **No Composer, no npm, no bun, no build step.**
 
-## Quick start (3 steps)
+## Quick start
 
-### 1. Copy the folder to your server
+### 1. Clone the repository
 
 ```bash
-# from your local machine:
-scp -r zeportic/ user@zammad-host:/opt/zeportic/
+git clone https://github.com/TadavomnisT/Zeportic.git
+cd Zeportic
+```
 
-ssh user@zammad-host
+(Or download and extract the [latest release ZIP](https://github.com/TadavomnisT/Zeportic/releases)
+— the contents are identical.)
+
+Deploy it anywhere you like, e.g.:
+
+```bash
+sudo cp -r Zeportic /opt/zeportic      # typical server location
 cd /opt/zeportic
 ```
 
-### 2. Edit `config.php` — the ONLY file you need to touch
+### 2. Start the server
+
+```bash
+php -S 0.0.0.0:1234
+```
+
+> **That's the whole command.** No `-t`, no router file, no flags — PHP's
+> built-in server uses the current folder as docroot and `index.php` as the
+> default entry. (Optionally, `./start.sh 8080` does the same with a banner.)
+
+### 3. Open the browser — the setup wizard takes over
+
+Point your browser at `http://YOUR-SERVER-IP:1234`. On the first run the
+**graphical setup wizard** starts automatically:
+
+1. **Welcome** — verifies PHP version, extensions and folder permissions.
+2. **Elasticsearch** — enter the URL + credentials, hit *Test connection*:
+   Zeportic pings the cluster, reports health/version and **auto-discovers
+   every `zammad*` index** (with document counts) so you can pick the right
+   index prefix from a list instead of guessing.
+3. **Admin account** — choose the dashboard login (stored as a modern
+   `password_hash`, never plain text), plus default language (26 available)
+   and theme (dark by default).
+4. **Finish** — settings are saved to `config.local.php` (git-ignored) and you
+   are dropped onto the login page.
+
+Log in, and the full dashboard appears. The wizard never appears again until
+you delete `config.local.php`.
+
+Verify everything with the built-in doctor at any time:
+
+```bash
+php diagnose.php
+```
+
+Prefer to configure by hand? See [Manual configuration](#manual-configuration-alternative).
+
+## First-run setup wizard
+
+The wizard (`setup.php`) is only reachable while the instance is **unconfigured**:
+
+- Unconfigured = no `config.local.php` exists AND `config.php` still contains
+  the shipped `CHANGE_ME…` placeholders.
+- As soon as configuration exists (wizard output **or** a manually edited
+  `config.php`), `setup.php` immediately redirects to the dashboard.
+- To **re-run** the wizard: `rm config.local.php` and reload the page.
+- Security: anyone who can reach an unconfigured instance can claim it by
+  completing the wizard — finish setup promptly after deploying.
+
+The wizard writes **only** `config.local.php`; your versioned `config.php`
+stays untouched, so `git pull` upgrades are always conflict-free.
+
+## Manual configuration (alternative)
+
+If you'd rather not use the wizard, edit `config.php` — the only file you need
+to touch — and replace the placeholders:
 
 ```php
 'elasticsearch' => [
@@ -125,44 +264,29 @@ cd /opt/zeportic
 ],
 ```
 
-### 3. Start the server
-
-```bash
-php -S 0.0.0.0:1234
-```
-
-Open `http://YOUR-SERVER-IP:1234` and log in with the `auth.username` /
-`auth.password` you set in `config.php`.
-
-> **That's the whole command.** No `-t`, no router file, no flags — PHP's
-> built-in server uses the current folder as docroot and `index.php` as the
-> default entry. (Optionally, `./start.sh 8080` does the same with a banner.)
-
-Verify everything with the built-in doctor:
-
-```bash
-php diagnose.php
-```
+As soon as the ES password is no longer `CHANGE_ME_ELASTIC_PASSWORD`, the app
+considers itself configured and the setup wizard stays out of the way.
 
 ## Configuration reference
 
-All configuration lives in `config.php` (guarded against direct HTTP access):
+Effective configuration = `config.php` (versioned base) deep-merged with
+`config.local.php` (optional wizard output / local overrides).
 
 | Key | Default | Description |
 |---|---|---|
-| `elasticsearch.host` | `http://127.0.0.1:9200` | Base URL of your Elasticsearch. Use `https://` for TLS. |
+| `elasticsearch.host` | `https://localhost:9200` | Base URL of your Elasticsearch. Use `https://` for TLS. |
 | `elasticsearch.index_prefix` | `zammad_production` | Zammad's index prefix. Staging installs usually use `zammad_test`. |
 | `elasticsearch.username` / `password` | — | ES credentials. The app only issues read requests (`_search`, `_count`, `_cat/indices`, `_cluster/health`, `_mapping`). |
 | `elasticsearch.verify_ssl` | `false` | Verify the TLS certificate. Keep `false` for self-signed certs (Zammad's default). |
 | `elasticsearch.ca_bundle` | `null` | Path to a CA bundle used when `verify_ssl` is `true`. |
-| `auth.username` / `password` | `admin` / `admin` | Dashboard login (not your Zammad/ES credentials). **Change before exposing.** |
-| `auth.password_hash` | `null` | Optional `password_hash()` value. When set, it takes precedence over `password`. |
+| `auth.username` / `password` | `admin` / `CHANGE-ME` | Dashboard login (not your Zammad/ES credentials). **Change before exposing** — the setup wizard does this for you. |
+| `auth.password_hash` | `null` | Optional `password_hash()` value. When set, it takes precedence over `password`. The wizard always writes a hash. |
 | `auth.session_lifetime` | `28800` | Session lifetime in seconds (8 h). |
 | `app.name` / `app.subtitle` | `Zeportic` / `Zammad Reporting Tool` | Branding shown in the sidebar, login and exports. |
 | `app.default_lang` | `en` | Any language code from `assets/lang/meta.js` (e.g. `fa`, `de`, `zh-cn`). |
-| `app.default_theme` | `light` | `light` or `dark`. |
+| `app.default_theme` | `dark` | `dark` (branded default) or `light`. |
 | `app.timezone` | `UTC` | PHP timezone used for log timestamps and exports. |
-| `app.version` | `1.0.0` | Shown on the login page and in the footer. |
+| `app.version` | `1.1.0` | Shown on the login page and in the footer. |
 
 ## Connecting to Zammad
 
@@ -176,12 +300,13 @@ If Zammad was installed from packages (apt/yum) together with Elasticsearch:
    ```bash
    curl -u elastic:YOURPASS http://localhost:9200/_cluster/health
    ```
-3. Put the same URL + credentials into `config.php`.
+3. Enter the same URL + credentials in the setup wizard (or `config.php`).
 4. Confirm the index prefix:
    ```bash
    curl -u elastic:YOURPASS http://localhost:9200/_cat/indices?v | grep zammad
    ```
    You should see `zammad_production_ticket`, `zammad_production_user`, etc.
+   (The wizard lists these for you automatically.)
 
 ### Zammad running on Docker
 
@@ -208,10 +333,10 @@ docker compose exec zammad-elasticsearch curl -s -u elastic:YOURPASS localhost:9
 
 **Step 2 — pick how Zeportic reaches ES**
 
-| Scenario | `config.php` host value |
+| Scenario | Elasticsearch URL to enter |
 |---|---|
 | Compose publishes 9200 to the host (default) | `http://127.0.0.1:9200` |
-| ES exposed with TLS | `https://127.0.0.1:9200` + `'verify_ssl' => false` (self-signed) |
+| ES exposed with TLS | `https://127.0.0.1:9200` + leave "Verify TLS certificate" unchecked (self-signed) |
 | Port **not** published / Zeportic in a container | Attach Zeportic to the compose network and use `http://zammad-elasticsearch:9200` |
 
 **Step 3 — verify**
@@ -222,7 +347,7 @@ php diagnose.php
 
 The diagnostic discovers the indices for you: if the prefix is wrong it lists
 every `zammad*` index it can find so you can copy the right one into
-`index_prefix`.
+`index_prefix` (or click the suggestion in the setup wizard).
 
 ### Docker Compose service example
 
@@ -250,13 +375,13 @@ services:
       - no-new-privileges:true
 ```
 
-Then point `config.php` at the ES **service name**:
+Then use the ES **service name** as the URL (setup wizard or `config.php`):
 
 ```php
 'host' => 'http://zammad-elasticsearch:9200',
 ```
 
-> ⚠️ The exact service name and network differ between compose versions —
+> The exact service name and network differ between compose versions —
 > run `docker compose ps` and `docker network ls` to confirm yours.
 
 ### Running Zeportic itself as a container
@@ -264,6 +389,7 @@ Then point `config.php` at the ES **service name**:
 If you prefer to keep Zeportic outside the Zammad compose file:
 
 ```bash
+git clone https://github.com/TadavomnisT/Zeportic.git /opt/zeportic
 docker run -d --name zeportic \
   --network zammad-docker-compose_default \
   -p 1234:1234 \
@@ -292,7 +418,7 @@ RestartSec=3
 ; Hardening
 NoNewPrivileges=true
 ProtectSystem=full
-ReadWritePaths=/opt/zeportic/storage
+ReadWritePaths=/opt/zeportic/storage /opt/zeportic/config.local.php
 
 [Install]
 WantedBy=multi-user.target
@@ -332,11 +458,15 @@ globe button (login page and header) or the `L` keyboard shortcut:
 
 ## Security notes
 
-- **`config.php` and `src/*.php` are guarded** with an `APP_RUNNING` constant.
-  Opening `http://host:1234/config.php` directly prints `No direct access` and
-  exits — your ES password is never served.
+- **Graphical setup wizard** is reachable only while the instance is
+  unconfigured and disappears the moment configuration exists.
+- **`config.php`, `config.local.php` and `src/*.php` are guarded** with an
+  `APP_RUNNING` constant. Opening them over HTTP prints `No direct access` —
+  your ES password is never served.
 - The app only **reads** from Elasticsearch. For least privilege, create a
   read-only ES role limited to `zammad_*` indices instead of using `elastic`.
+- The wizard stores the dashboard password as a **`password_hash()`** hash —
+  plain-text passwords are never persisted by Zeportic itself.
 - Login is brute-force throttled: 5 failed attempts lock the session for 60 s
   (with a `Retry-After` header), and sessions regenerate their ID on login.
 - A strict Content-Security-Policy (`script-src 'self'`) is served — the
@@ -345,11 +475,15 @@ globe button (login page and header) or the `L` keyboard shortcut:
   if requested over HTTP (read it with `tail -n +2 storage/errors.php`).
 - Don't expose port 1234 to the public internet without TLS — put nginx/Apache
   with HTTPS in front (see [systemd section](#running-as-a-systemd-service)).
+- Found a security issue? Please follow [SECURITY.md](SECURITY.md) — do not
+  open a public issue.
 
 ## API reference
 
 All endpoints live under `api.php?action=…` and require an authenticated
 session (except `login`, `me`, `health`). Most accept `&period=7|30|90` (days).
+Until the instance is configured, every endpoint replies `503` with
+`setup_required: true` and the wizard URL.
 
 | Action | Returns |
 |---|---|
@@ -385,7 +519,7 @@ session (except `login`, `me`, `health`). Most accept `&period=7|30|90` (days).
 
 ## Troubleshooting
 
-### ⚡ Quick diagnosis — run this FIRST
+### Quick diagnosis — run this FIRST
 
 If you see HTTP 500 errors on API calls, or the dashboard shows an
 *"Elasticsearch Connection Error"* banner:
@@ -398,7 +532,7 @@ php diagnose.php
 It runs **7 checks** with colored ✔/✘/⚠ output and tells you exactly what to fix:
 
 1. **PHP environment** — version + required extensions
-2. **config.php** — validates credentials aren't still placeholders
+2. **config.php / config.local.php** — validates credentials aren't still placeholders and reports whether the wizard output is merged
 3. **DNS + TCP** — can the server reach the ES host/port at all?
 4. **TLS + auth** — SSL handshake + elastic password (maps cURL errors to human hints)
 5. **Cluster health** — green/yellow/red, node count, unassigned shards
@@ -416,12 +550,23 @@ Exit code `0` = all good, `1` = at least one failure.
 
 ### Common fixes
 
+**The setup wizard appears instead of the dashboard**
+The app is unconfigured: either finish the wizard once, or fill your real
+Elasticsearch password in `config.php`. To force the wizard to appear again,
+delete `config.local.php`.
+
+**"Cannot write the configuration file" during setup**
+The web-server user needs write access to the project folder:
+```bash
+sudo chown -R www-data:www-data /opt/zeportic
+```
+
 **"Elasticsearch request failed: … certificate"**
-Zammad's ES often uses a self-signed cert. Keep `'verify_ssl' => false`, or set
+Zammad's ES often uses a self-signed cert. Keep TLS verification unchecked, or set
 `'ca_bundle' => '/etc/ssl/certs/ca-certificates.crt'` + `'verify_ssl' => true`.
 
 **HTTP 401 / "unable to authenticate user [elastic]"**
-Wrong elastic password. Reset it and update `config.php`:
+Wrong elastic password. Reset it and update the configuration:
 ```bash
 /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
 # Docker:
@@ -446,6 +591,11 @@ staging = `zammad_test`. Verify:
 ```bash
 curl -u elastic:YOURPASS http://localhost:9200/_cat/indices?v | grep zammad
 ```
+Or simply re-run the wizard — it lists every `zammad*` prefix it detects.
+
+**Forgot the dashboard password**
+Delete `config.local.php` and re-run the setup wizard (or set
+`auth.password` / `auth.password_hash` in `config.php` manually).
 
 **Dashboard loads but charts are empty**
 Your Zammad may not have indexed KB/tags data — those sections simply render
@@ -456,8 +606,10 @@ Your Zammad may not have indexed KB/tags data — those sections simply render
 ```
 zeportic/
 ├── index.php              ← entry point (HTML shell) — served for "/"
+├── setup.php              ← graphical first-run setup wizard (auto-appears)
 ├── api.php                ← JSON API — served for "/api.php?action=..."
-├── config.php             ← ★ EDIT THIS (ES credentials + dashboard login)
+├── config.php             ← versioned base config (placeholders on fresh clones)
+├── config.local.php       ← wizard output / local overrides (git-ignored, never committed)
 ├── diagnose.php           ← CLI diagnostics — run: php diagnose.php
 ├── start.sh               ← optional launcher (just runs php -S)
 ├── LICENSE                ← GPL-3.0
@@ -465,19 +617,23 @@ zeportic/
 ├── CONTRIBUTING.md        ← how to contribute
 ├── SECURITY.md            ← how to report vulnerabilities
 ├── CHANGELOG.md           ← release notes
+├── docs/
+│   └── screenshots/       ← the screenshots used in this README
 ├── storage/               ← runtime error log (auto-created, HTTP-protected)
 ├── assets/                ← all static assets, bundled locally
 │   ├── app.css            ← full stylesheet (purple theme, RTL + dark mode)
 │   ├── app.js             ← SPA: charts, wordcloud, exports, i18n runtime
+│   ├── setup.css / setup.js ← setup wizard UI
 │   ├── chart.umd.min.js   ← Chart.js 4.x (bundled, NOT from a CDN)
 │   ├── fonts.css          ← @font-face for Vazirmatn (local)
 │   ├── fonts/             ← Vazirmatn woff2 files (5 weights, bundled)
 │   ├── lang/              ← 26 language packs + catalog (meta.js)
 │   └── img/               ← Zeportic logo + favicon
 └── src/                   ← PHP classes (NOT web-accessible — guarded)
-    ├── ElasticsearchClient.php   ← cURL-based ES client (no dependencies)
-    ├── ReportService.php         ← all aggregations vs Zammad indices
-    └── Auth.php                  ← session auth + brute-force lockout
+    ├── Config.php               ← config loading/merge + setup state
+    ├── ElasticsearchClient.php  ← cURL-based ES client (no dependencies)
+    ├── ReportService.php        ← all aggregations vs Zammad indices
+    └── Auth.php                 ← session auth + brute-force lockout
 ```
 
 ## Contributing
@@ -485,6 +641,11 @@ zeportic/
 Contributions are welcome — new languages, report ideas, performance work, bug
 fixes. See [CONTRIBUTING.md](CONTRIBUTING.md). Translating to a new language is
 the easiest way to help: one file, no code.
+
+- Bug reports & feature ideas: [open an issue](https://github.com/TadavomnisT/Zeportic/issues)
+- Pull requests: [open a PR](https://github.com/TadavomnisT/Zeportic/pulls)
+- If Zeportic saves you time, please **star the repository** — it helps other
+  Zammad admins find it.
 
 ## License
 

@@ -4,6 +4,35 @@ All notable changes to Zeportic are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 versioning follows [SemVer](https://semver.org/).
 
+## [1.1.0] — 2026-09-03
+
+### Added
+- **Graphical first-run setup wizard** (`setup.php` + `assets/setup.js/css`):
+  environment check, Elasticsearch connection test with cluster health and
+  automatic `zammad*` index discovery (with document counts and prefix
+  suggestions), dashboard admin account creation, default language/theme
+  selection. Writes `config.local.php` (git-ignored, HTTP-guarded, atomic
+  write) and stores the admin password as a `password_hash()`.
+- New `src/Config.php`: versioned `config.php` deep-merged with the optional
+  `config.local.php`; `Config::isConfigured()` drives the wizard flow.
+  `index.php`, `api.php` and `diagnose.php` all load config through it —
+  unconfigured installs redirect to the wizard (`api.php` answers
+  `503 setup_required` with the wizard URL).
+- `docs/screenshots/` — real screenshots of every report section, the setup
+  wizard and the login page, embedded in the README.
+- README: repository URLs (github.com/TadavomnisT/Zeportic), `git clone`
+  instructions, screenshot gallery, setup-wizard guide, emoji-free feature
+  table, new troubleshooting entries (wizard re-run, write permissions,
+  forgotten dashboard password).
+
+### Changed
+- **Dark theme is now the default** (`app.default_theme: dark`) — the branded
+  purple dark mode ships out of the box; light remains one click away.
+- Shipped `config.php` now contains placeholder credentials
+  (`CHANGE_ME_ELASTIC_PASSWORD`) so a fresh clone boots straight into the
+  setup wizard; manual configuration remains fully supported.
+- Version bumped to 1.1.0 (login badge, footer, exports).
+
 ## [1.0.0] — 2026-09-03
 
 The first community release of **Zeportic — Zammad Reporting Tool**.

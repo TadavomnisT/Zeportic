@@ -4,11 +4,16 @@
  *  Zeportic — Zammad Reporting Tool — Configuration
  * ============================================================================
  *
- *  THIS IS THE ONLY FILE YOU NEED TO EDIT.
+ *  TWO WAYS TO CONFIGURE:
  *
- *  Put your Elasticsearch credentials and your dashboard admin password here,
- *  then run:   php -S 0.0.0.0:1234
- *  and open:   http://YOUR-SERVER-IP:1234
+ *  1. (Recommended) Just run the app — the graphical setup wizard does it:
+ *        php -S 0.0.0.0:1234      then open http://YOUR-SERVER-IP:1234
+ *     The wizard writes config.local.php (git-ignored) and never touches
+ *     this file. It also stores the dashboard password as a secure hash.
+ *
+ *  2. Manual: replace the CHANGE_ME placeholders below with your values.
+ *     As long as the ES password below still reads CHANGE_ME_ELASTIC_PASSWORD,
+ *     the setup wizard will start instead of the dashboard.
  *
  *  The app only READS from Elasticsearch — it never writes or deletes.
  * ----------------------------------------------------------------------------
@@ -20,9 +25,12 @@ defined('APP_RUNNING') or die('No direct access');
 return [
 
     // ===================== Elasticsearch =====================
+    // Zammad stores its data in Elasticsearch. Fill these in with the
+    // values from your Zammad/ES installation — or let the setup wizard
+    // do it (it can auto-detect the index prefix and test the connection).
     'elasticsearch' => [
-        // ES endpoint. Zammad's Docker Compose default publishes 9200 to the
-        // host. See README.md → "Connecting to Zammad" for Docker setups.
+        // ES endpoint. Zammad's Docker Compose default is https://localhost:9200
+        // (see README.md → "Connecting to Zammad" for Docker setups).
         'host'     => 'https://localhost:9200',
 
         // Index prefix used by Zammad.
@@ -32,7 +40,7 @@ return [
 
         // ES credentials.
         'username' => 'elastic',
-        'password' => 'CHANGE_ME_ELASTIC_PASSWORD',   // <-- your elastic password
+        'password' => 'CHANGE_ME_ELASTIC_PASSWORD',   // <-- setup wizard or edit manually
 
         // TLS certificate verification.
         //  - Zammad's ES often uses a self-signed cert by default → keep false.
@@ -46,10 +54,11 @@ return [
 
     // ===================== Dashboard Admin Auth =====================
     // Credentials for logging into THIS dashboard (NOT Elasticsearch).
-    // CHANGE THESE from the defaults before exposing the dashboard.
+    // The setup wizard writes a password_hash into config.local.php — no need
+    // to touch this when using the wizard.
     'auth' => [
         'username' => 'admin',
-        'password' => 'CHANGE_ME',           // <-- CHANGE THIS (plain text)
+        'password' => 'CHANGE-ME',               // <-- CHANGE THIS (plain text)
         // Optional: a PHP password_hash() of the password instead of plain text.
         // Generate with:  php -r "echo password_hash('YOUR-PASSWORD', PASSWORD_DEFAULT);"
         // When set, 'password' above is ignored for verification.
@@ -62,10 +71,10 @@ return [
         'name'          => 'Zeportic',
         'subtitle'      => 'Zammad Reporting Tool',
         'default_lang'  => 'en',    // any language code from assets/lang/meta.js
-        'default_theme' => 'light', // light | dark
+        'default_theme' => 'dark',  // light | dark  (dark is the branded default)
         'timezone'      => 'UTC',
         // Shown in the footer and on the login page. Bump when you customize.
-        'version'       => '1.0.0',
+        'version'       => '1.1.0',
     ],
 
 ];

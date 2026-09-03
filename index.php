@@ -22,7 +22,15 @@ declare(strict_types=1);
 define('APP_RUNNING', true);
 
 define('BASE_DIR', __DIR__);
-$config = require BASE_DIR . '/config.php';
+require BASE_DIR . '/src/Config.php';
+$config = Config::load();
+
+// First run? Send the user to the graphical setup wizard.
+if (!Config::isConfigured()) {
+    header('Location: setup.php');
+    exit;
+}
+
 require BASE_DIR . '/src/Auth.php';
 
 date_default_timezone_set($config['app']['timezone'] ?? 'UTC');
@@ -32,12 +40,8 @@ $isAuth = Auth::check($config['auth']);
 // ---- Language resolution (server side) ----
 // Priority: user cookie (set by the client-side language switcher) → config
 // default. The active pack is preloaded up front; English always loads too.
-$langCatalog = [
-    'en', 'fa', 'ar', 'he', 'ur', 'de', 'fr', 'es', 'pt', 'it', 'nl',
-    'pl', 'cs', 'el', 'ru', 'uk', 'tr', 'sv', 'id', 'vi', 'hi', 'th',
-    'ja', 'ko', 'zh-cn', 'zh-tw',
-];
-$rtlLangs = ['fa', 'ar', 'he', 'ur'];
+$langCatalog = Config::LANGS;
+$rtlLangs = Config::RTL;
 $Lang = (string)($config['app']['default_lang'] ?? 'en');
 $cookieLang = isset($_COOKIE['zr-lang']) ? (string)$_COOKIE['zr-lang'] : '';
 if ($cookieLang !== '' && in_array($cookieLang, $langCatalog, true)) {
@@ -48,11 +52,11 @@ if (!in_array($Lang, $langCatalog, true)) {
 }
 $Dir = in_array($Lang, $rtlLangs, true) ? 'rtl' : 'ltr';
 
-$Theme  = htmlspecialchars($config['app']['default_theme'] ?? 'light');
+$Theme  = htmlspecialchars($config['app']['default_theme'] ?? 'dark');
 $Name   = htmlspecialchars($config['app']['name'] ?? 'Zeportic');
 $Sub    = htmlspecialchars($config['app']['subtitle'] ?? 'Zammad Reporting Tool');
 $Title  = $Name . ' — ' . $Sub;
-$Version = htmlspecialchars($config['app']['version'] ?? '1.0.0');
+$Version = htmlspecialchars($config['app']['version'] ?? '1.1.0');
 ?>
 <!DOCTYPE html>
 <html lang="<?= $Lang ?>" dir="<?= $Dir ?>" data-theme="<?= $Theme ?>">

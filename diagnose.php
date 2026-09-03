@@ -129,8 +129,15 @@ if (!is_readable($configPath)) {
     exit(1);
 }
 
-$config = require $configPath;
+// Merge in config.local.php (setup wizard output) when present.
+require BASE_DIR . '/src/Config.php';
+$config = Config::load();
 pass('config.php loaded');
+if (is_file(Config::localPath())) {
+    pass('config.local.php (setup wizard output) merged', 'delete the file to re-run the wizard');
+} else {
+    warn('config.local.php not present', 'The setup wizard has not run on this install.', 'Either run the graphical wizard (open the app in a browser) or edit config.php manually.');
+}
 
 $es = $config['elasticsearch'] ?? null;
 if (!is_array($es)) {

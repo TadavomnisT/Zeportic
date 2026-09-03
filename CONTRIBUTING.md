@@ -19,10 +19,10 @@ step, or a CDN, please open an issue first so we can discuss an alternative.
 ## Getting started
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/zeportic.git
-cd zeportic
+git clone https://github.com/TadavomnisT/Zeportic.git
+cd Zeportic
 php -S 0.0.0.0:1234
-# open http://localhost:1234 — log in with the credentials from config.php
+# open http://localhost:1234 — the setup wizard appears on the first run
 ```
 
 If you don't have a Zammad/Elasticsearch instance handy, any Elasticsearch
@@ -59,7 +59,7 @@ you exactly what is missing.
 
 ## Reporting bugs
 
-Open a GitHub issue and include:
+Open a [GitHub issue](https://github.com/TadavomnisT/Zeportic/issues) and include:
 
 - Zeportic version (from `config.php` → `app.version`)
 - PHP version and OS (`php -v`, `uname -a`)

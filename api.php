@@ -22,7 +22,8 @@ declare(strict_types=1);
 define('APP_RUNNING', true);
 
 define('BASE_DIR', __DIR__);
-$config = require BASE_DIR . '/config.php';
+require BASE_DIR . '/src/Config.php';
+$config = Config::load();
 require BASE_DIR . '/src/ElasticsearchClient.php';
 require BASE_DIR . '/src/ReportService.php';
 require BASE_DIR . '/src/Auth.php';
@@ -35,6 +36,17 @@ header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
 header('Referrer-Policy: same-origin');
 header('Cache-Control: no-store');
+
+// First run? Point clients at the graphical setup wizard.
+if (!Config::isConfigured()) {
+    http_response_code(503);
+    echo json_encode([
+        'error'        => 'Zeportic is not configured yet. Open /setup.php to run the setup wizard.',
+        'setup_required' => true,
+        'setup_url'    => 'setup.php',
+    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    exit;
+}
 
 $action = $_GET['action'] ?? '';
 $period = (int)($_GET['period'] ?? 30);
