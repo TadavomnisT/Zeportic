@@ -101,7 +101,7 @@
 
   function brand() {
     return el('div', { class: 'setup-brand' }, [
-      el('img', { src: '/assets/img/Zeportic.png', alt: 'Zeportic logo' }),
+      el('img', { src: '/assets/img/logo-mark.png', alt: 'Zeportic logo' }),
       el('div', { class: 't' }, [
         el('b', null, ['Zeportic']),
         el('span', null, ['Zammad Reporting Tool — first-run setup · v' + VERSION])
