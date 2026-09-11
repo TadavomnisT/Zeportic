@@ -110,6 +110,8 @@ On the machine that will run Zeportic (usually the Zammad/ES host itself):
 
 That's it. **No Composer, no npm, no bun, no build step.**
 
+- Example of easy setup on Debian/Ubuntu : `sudo apt update && sudo apt install -y php-cli php-curl php-mbstring`
+
 ## Quick start
 
 ### 1. Clone the repository
