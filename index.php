@@ -56,7 +56,7 @@ $Theme  = htmlspecialchars($config['app']['default_theme'] ?? 'dark');
 $Name   = htmlspecialchars($config['app']['name'] ?? 'Zeportic');
 $Sub    = htmlspecialchars($config['app']['subtitle'] ?? 'Zammad Reporting Tool');
 $Title  = $Name . ' — ' . $Sub;
-$Version = htmlspecialchars($config['app']['version'] ?? '1.1.0');
+$Version = htmlspecialchars($config['app']['version'] ?? '1.1.1');
 ?>
 <!DOCTYPE html>
 <html lang="<?= $Lang ?>" dir="<?= $Dir ?>" data-theme="<?= $Theme ?>">

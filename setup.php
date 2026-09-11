@@ -271,7 +271,7 @@ if ($method === 'POST' && $action === 'finish') {
 $config = Config::load();
 $theme = in_array(($config['app']['default_theme'] ?? 'dark'), ['dark', 'light'], true)
     ? ($config['app']['default_theme'] ?? 'dark') : 'dark';
-$version = htmlspecialchars((string)($config['app']['version'] ?? '1.1.0'));
+$version = htmlspecialchars((string)($config['app']['version'] ?? '1.1.1'));
 $langsJson = json_encode(Config::LANGS);
 ?>
 <!DOCTYPE html>
