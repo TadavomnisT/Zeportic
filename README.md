@@ -227,7 +227,7 @@ Effective configuration = `config.php` (versioned base) deep-merged with
 | `app.default_lang` | `en` | Any language code from `assets/lang/meta.js` (e.g. `fa`, `de`, `zh-cn`). |
 | `app.default_theme` | `dark` | `dark` (branded default) or `light`. |
 | `app.timezone` | `UTC` | PHP timezone used for log timestamps and exports. |
-| `app.version` | `1.1.0` | Shown on the login page and in the footer. |
+| `app.version` | `1.1.1` | Shown on the login page and in the footer. |
 
 ## Connecting to Zammad
 
