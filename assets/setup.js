@@ -7,7 +7,7 @@
   'use strict';
 
   var body = document.body;
-  var VERSION = body.getAttribute('data-version') || '1.1.0';
+  var VERSION = body.getAttribute('data-version') || '1.1.1';
   var LANGS = [];
   try { LANGS = JSON.parse(body.getAttribute('data-langs') || '[]'); } catch (e) { LANGS = []; }
 

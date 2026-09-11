@@ -8,7 +8,7 @@
   // No inline scripts are used, so a strict CSP (script-src 'self') holds.
   window.__CONFIG__ = window.__CONFIG__ || {
     authenticated: document.body && document.body.dataset.authenticated === '1',
-    version: (document.body && document.body.dataset.version) || '1.1.0',
+    version: (document.body && document.body.dataset.version) || '1.1.1',
   };
 
   // ---- Persian date utils ----
@@ -561,7 +561,7 @@
   function renderLogin() {
     var view = document.getElementById('login-view');
     view.innerHTML = '';
-    var VERSION = (window.__CONFIG__ && window.__CONFIG__.version) || '1.1.0';
+    var VERSION = (window.__CONFIG__ && window.__CONFIG__.version) || '1.1.1';
 
     // top bar: language + theme
     var top = el('div', { class: 'login-top' }, [
